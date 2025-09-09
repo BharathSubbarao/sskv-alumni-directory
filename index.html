@@ -629,115 +629,223 @@
     </footer>
 
     <script>
-        // Alumni Data - Replace this with your actual data
+        // SSKV Alumni Data - Real data from Google Sheet
         const ALUMNI_DATA = [
             {
-                name: "Rajesh Kumar Sharma",
-                lastYear: "2010",
-                location: "Mumbai, Maharashtra",
-                profession: "Senior Software Engineer at Google",
-                contact: "+919876543210",
-                whatsappName: "Rajesh Sharma",
-                photoUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150"
+                name: "Senthilkumar Chandrasekaran",
+                lastYear: "XII / 1996",
+                location: "Chennai",
+                profession: "Sr. GM - Engineering at VA Tech Wabag, Indian MNC with specialisation in Water and Wastewater Treatment",
+                contact: "+91 9382125363",
+                whatsappName: "Senthilkumar",
+                photoUrl: "https://drive.google.com/uc?id=1dSWxoCfG2JUTEQjlMRXGbhP4IMt2I20f"
             },
             {
-                name: "Priya Patel",
-                lastYear: "2012",
-                location: "Bangalore, Karnataka",
-                profession: "Product Manager at Microsoft",
-                contact: "+919876543211",
-                whatsappName: "Priya P",
-                photoUrl: "https://images.unsplash.com/photo-1494790108755-2616b612b977?w=150"
+                name: "C Elanchezian",
+                lastYear: "8th Standard",
+                location: "Chennai",
+                profession: "AGM, Hyundai Motor India Limited",
+                contact: "+91 9940689936",
+                whatsappName: "Chezhian",
+                photoUrl: null
             },
             {
-                name: "Amit Desai",
-                lastYear: "2008",
-                location: "San Francisco, USA",
-                profession: "Entrepreneur & CEO at TechStart",
-                contact: "+1234567890",
-                whatsappName: "Amit D",
-                photoUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150"
+                name: "Naresh G",
+                lastYear: "12th",
+                location: "Tiruchirappalli",
+                profession: "Teaching",
+                contact: "+91 7338985380",
+                whatsappName: "NG",
+                photoUrl: "https://drive.google.com/uc?id=1QA06-ebdXARo5mfRdQveiXdJHvvg38zs"
             },
             {
-                name: "Sneha Agarwal",
-                lastYear: "2015",
-                location: "Delhi, India",
-                profession: "Investment Banking Analyst",
-                contact: "+919876543212",
-                whatsappName: "Sneha A",
-                photoUrl: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150"
+                name: "Ashok Venkatesan",
+                lastYear: "1996",
+                location: "Chennai",
+                profession: "IT and Agriculture",
+                contact: "+91 9176069444",
+                whatsappName: "Ashok Venkatesan",
+                photoUrl: "https://drive.google.com/uc?id=1k9vvHVdPM1EJZIuLhFi2bfJVHMqrWChi"
             },
             {
-                name: "Vikram Singh",
-                lastYear: "2009",
-                location: "London, UK",
-                profession: "Data Scientist at Amazon",
-                contact: "+447123456789",
-                whatsappName: "Vikram S",
-                photoUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150"
+                name: "J Saravanan",
+                lastYear: "XII",
+                location: "Mumbai",
+                profession: "Commissioner of Income-tax",
+                contact: "+91 7506660190",
+                whatsappName: "Saravanan",
+                photoUrl: "https://drive.google.com/uc?id=1lATDWopy9CNJXlG0zZ2Zm5qIq4hlzw8c"
             },
             {
-                name: "Neha Gupta",
-                lastYear: "2013",
-                location: "Toronto, Canada",
-                profession: "UX Designer at Shopify",
-                contact: "+14167890123",
-                whatsappName: "Neha G",
-                photoUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150"
+                name: "Bharathvajan Subbarao",
+                lastYear: "6 to 12",
+                location: "Hyderabad",
+                profession: "Software Professional",
+                contact: "+91 9676555717",
+                whatsappName: "Bharath Subbarao",
+                photoUrl: "https://drive.google.com/uc?id=1P2O0GZWV06x-mpdRWgrMRh49l_tIT17a"
             },
             {
-                name: "Arjun Reddy",
-                lastYear: "2011",
-                location: "Hyderabad, Telangana",
-                profession: "Medical Doctor & Surgeon",
-                contact: "+919876543213",
-                whatsappName: "Dr. Arjun",
-                photoUrl: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=150"
+                name: "Pradeep",
+                lastYear: "10th",
+                location: "Auckland",
+                profession: "Self Employed",
+                contact: "+64 0223670095",
+                whatsappName: "Pradeep",
+                photoUrl: null
             },
             {
-                name: "Kavya Nair",
-                lastYear: "2014",
-                location: "Chennai, Tamil Nadu",
-                profession: "Civil Engineer & Project Manager",
-                contact: "+919876543214",
-                whatsappName: "Kavya N",
-                photoUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150"
+                name: "R. Parthasarathy",
+                lastYear: "12th",
+                location: "Chengalpattu",
+                profession: "Consultant Optometrist and Contact Lens Specialist",
+                contact: "+91 7845675633",
+                whatsappName: "Parthasarathy",
+                photoUrl: "https://drive.google.com/uc?id=1EX7gS5r5fJGdJTLVS2tTEbY8pbHy3g0S"
             },
             {
-                name: "Rohit Mehta",
-                lastYear: "2007",
-                location: "Dubai, UAE",
-                profession: "Business Development Manager",
-                contact: "+971501234567",
-                whatsappName: "Rohit M",
-                photoUrl: "https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=150"
+                name: "D Prabakar",
+                lastYear: "10th",
+                location: "Kanchipuram",
+                profession: "Document Writer",
+                contact: "+91 9842379539",
+                whatsappName: "PRABAKAR",
+                photoUrl: "https://drive.google.com/uc?id=1pxtLLpW-fjE60C_QAVCgawpWkol5zcu-"
             },
             {
-                name: "Anjali Joshi",
-                lastYear: "2016",
-                location: "Pune, Maharashtra",
-                profession: "Marketing Manager at Unilever",
-                contact: "+919876543215",
-                whatsappName: "Anjali J",
-                photoUrl: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150"
+                name: "Praveen Ramachandran",
+                lastYear: "12th",
+                location: "Chennai",
+                profession: "Freelancer - Photographer - Designer",
+                contact: "+91 7338897333",
+                whatsappName: "Praveen Artsymonk",
+                photoUrl: "https://drive.google.com/uc?id=1_O-ZnbZ4eqCazVMciwWOJb2nTPmfj304"
             },
             {
-                name: "Karan Malhotra",
-                lastYear: "2006",
-                location: "Singapore",
-                profession: "Financial Consultant",
-                contact: "+6591234567",
-                whatsappName: "Karan M",
-                photoUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150"
+                name: "Prasanna",
+                lastYear: "5th Std",
+                location: "Chennai",
+                profession: "Principal Program Manager",
+                contact: "+91 9940253693",
+                whatsappName: "Prasanna",
+                photoUrl: "https://drive.google.com/uc?id=1DmNBfSjj1gEx3zXiK2adjr842wMsx8gi"
             },
             {
-                name: "Pooja Sharma",
-                lastYear: "2017",
-                location: "Jaipur, Rajasthan",
-                profession: "Teacher & Education Consultant",
-                contact: "+919876543216",
-                whatsappName: "Pooja S",
-                photoUrl: "https://images.unsplash.com/photo-1664575602276-acd073f104c1?w=150"
+                name: "Balaji Ramachandran",
+                lastYear: "12th",
+                location: "Vellore",
+                profession: "Footwear Sourcing Operations Leader",
+                contact: "+91 9791451600",
+                whatsappName: "Balaji Ram",
+                photoUrl: "https://drive.google.com/uc?id=13xOY9YRRpHu0a11LY0sGnrfpO2JnXAdC"
+            },
+            {
+                name: "Bonss Sorko Bonss",
+                lastYear: "9th to 12th Std",
+                location: "Chennai",
+                profession: "Product Manager in CAM Ltd",
+                contact: "+91 8608123926",
+                whatsappName: "@My Redeemer JESUS SAVES",
+                photoUrl: null
+            },
+            {
+                name: "S. Prakash",
+                lastYear: "Till Twelfth Year 1996",
+                location: "Chennai",
+                profession: "Business",
+                contact: "+91 9884720008",
+                whatsappName: "Prakash",
+                photoUrl: null
+            },
+            {
+                name: "Madhanraj Mahendran",
+                lastYear: "1996",
+                location: "Chennai",
+                profession: "Pharmacist working in Pharma Manufacturing Company",
+                contact: "+91 9840432834",
+                whatsappName: "Madhanraj",
+                photoUrl: null
+            },
+            {
+                name: "Raghunaath M",
+                lastYear: "8/92",
+                location: "India",
+                profession: "Manager, IT Tech., Nuvama Wealth and Investment Ltd",
+                contact: "+91 9840954897",
+                whatsappName: "Raghunaath M",
+                photoUrl: "https://drive.google.com/uc?id=14IzgLt7LF3TiGp3hm_FQOoWfUdCqa1xq"
+            },
+            {
+                name: "Seetharaman",
+                lastYear: "12th",
+                location: "Kanchipuram",
+                profession: "IT",
+                contact: "+91 9444111210",
+                whatsappName: "Seetharaman",
+                photoUrl: "https://drive.google.com/uc?id=1wSGYEUc-8wlgXk186iAxEj9CUbFHgY82"
+            },
+            {
+                name: "S. Bharathi",
+                lastYear: "10th",
+                location: "Chennai",
+                profession: "Lawyer",
+                contact: "+91 9941511000",
+                whatsappName: "SIVA BHARATHI",
+                photoUrl: "https://drive.google.com/uc?id=142qsrwM12s9mg43VE5TyEPAiuQa8ng1A"
+            },
+            {
+                name: "Sudhagar Alphonse",
+                lastYear: "Till 7th, 11 and 12",
+                location: "Chennai",
+                profession: "IT Infrastructure Director at JeyaRama, handling IT Ops Team and Dev Ops Team. Previously worked for Sutherland, Hewlett Packard, DXC Technology, Urjanet, Arcadia",
+                contact: "+91 9940298362",
+                whatsappName: "SUDHAGAR ALPHONSE",
+                photoUrl: "https://drive.google.com/uc?id=1zZgpzxwyKESM0wjOAGGN04jn4bc30X0g"
+            },
+            {
+                name: "Kanagaraj Radhakrishnan",
+                lastYear: "+2; 1996",
+                location: "London",
+                profession: "Senior Scientist & Senior Lecturer",
+                contact: "+44 7427648603",
+                whatsappName: "\"RAJ\" R. KANAGARAJ",
+                photoUrl: null
+            },
+            {
+                name: "Dilip Pichumani",
+                lastYear: "8-10",
+                location: "Austin",
+                profession: "IT - Program Management",
+                contact: "+1 5128293068",
+                whatsappName: "Dilip Pichumani",
+                photoUrl: "https://drive.google.com/uc?id=1YSsOLMsiRLZcILzzdSryOaleSxn59Eqo"
+            },
+            {
+                name: "Sathish Srinivasan",
+                lastYear: "10th - 12th",
+                location: "Boston",
+                profession: "Research Scientist (Biotech R&D)",
+                contact: "+1 4027403375",
+                whatsappName: "Sathish",
+                photoUrl: "https://drive.google.com/uc?id=1VzYuhETJE72UZqAVm6Yo3e06umCeEBqW"
+            },
+            {
+                name: "Shanmugaraj C",
+                lastYear: "Grade 8",
+                location: "Kanchipuram",
+                profession: "Silk Saree Business",
+                contact: "+91 9443355008",
+                whatsappName: "Chickkannan Shanmugaraj",
+                photoUrl: null
+            },
+            {
+                name: "Mohan Balasubramaniyan",
+                lastYear: "10th",
+                location: "Bangalore",
+                profession: "Senior Tech Lead",
+                contact: "+91 9972298637",
+                whatsappName: "Mohan",
+                photoUrl: "https://drive.google.com/uc?id=1-DeU7FUd_Q1Sp-O0Wx61isT1mU3MsZC8"
             }
         ];
 
@@ -766,44 +874,46 @@
             // Remove all non-digit characters except +
             let cleaned = phone.replace(/[^\d+]/g, '');
             
-            // If it starts with +91, keep it
+            // Handle different phone number formats
             if (cleaned.startsWith('+91')) {
                 return cleaned;
-            }
-            // If it starts with 91, add +
-            if (cleaned.startsWith('91') && cleaned.length > 10) {
+            } else if (cleaned.startsWith('91') && cleaned.length > 10) {
                 return '+' + cleaned;
-            }
-            // If it's a 10-digit Indian number, add +91
-            if (cleaned.length === 10 && !cleaned.startsWith('0')) {
+            } else if (cleaned.length === 10 && !cleaned.startsWith('0')) {
                 return '+91' + cleaned;
-            }
-            // For international numbers, try to detect country code
-            if (cleaned.length > 10) {
+            } else if (cleaned.startsWith('+')) {
+                return cleaned;
+            } else if (cleaned.length > 10) {
                 return '+' + cleaned;
             }
             
-            return cleaned;
+            return '+91' + cleaned;
         }
 
         function getProfessionCategory(profession) {
             if (!profession) return 'Other';
             const lower = profession.toLowerCase();
             
-            if (lower.includes('software') || lower.includes('engineer') || lower.includes('developer') || lower.includes('tech')) {
+            if (lower.includes('software') || lower.includes('it ') || lower.includes('tech') || lower.includes('program')) {
                 return 'Technology';
-            } else if (lower.includes('manager') || lower.includes('business') || lower.includes('consultant')) {
+            } else if (lower.includes('manager') || lower.includes('business') || lower.includes('consultant') || lower.includes('operations')) {
                 return 'Management';
-            } else if (lower.includes('doctor') || lower.includes('medical') || lower.includes('surgeon')) {
+            } else if (lower.includes('doctor') || lower.includes('medical') || lower.includes('optometrist')) {
                 return 'Healthcare';
-            } else if (lower.includes('teacher') || lower.includes('education') || lower.includes('professor')) {
+            } else if (lower.includes('teacher') || lower.includes('education') || lower.includes('lecturer')) {
                 return 'Education';
-            } else if (lower.includes('designer') || lower.includes('ux') || lower.includes('creative')) {
-                return 'Design';
-            } else if (lower.includes('finance') || lower.includes('banking') || lower.includes('investment')) {
-                return 'Finance';
-            } else if (lower.includes('entrepreneur') || lower.includes('ceo') || lower.includes('founder')) {
+            } else if (lower.includes('engineer') || lower.includes('scientist') || lower.includes('research')) {
+                return 'Engineering & Science';
+            } else if (lower.includes('lawyer') || lower.includes('legal')) {
+                return 'Legal';
+            } else if (lower.includes('self') || lower.includes('freelance') || lower.includes('entrepreneur')) {
                 return 'Entrepreneurship';
+            } else if (lower.includes('photographer') || lower.includes('designer') || lower.includes('creative')) {
+                return 'Creative';
+            } else if (lower.includes('finance') || lower.includes('investment') || lower.includes('income-tax')) {
+                return 'Finance';
+            } else if (lower.includes('pharmacist') || lower.includes('pharma')) {
+                return 'Pharmaceutical';
             } else {
                 return 'Other';
             }
@@ -864,7 +974,7 @@
                         <div class="card-header">
                             ${photoElement}
                             <h3 class="alumni-name">${alumnus.name}</h3>
-                            <span class="alumni-year">Class of ${alumnus.lastYear}</span>
+                            <span class="alumni-year">${alumnus.lastYear}</span>
                         </div>
                         <div class="card-body">
                             <div class="info-item">
@@ -878,7 +988,7 @@
                                 <i class="fas fa-briefcase info-icon"></i>
                                 <div class="info-text">
                                     <span class="info-label">Profession</span>
-                                    ${truncateText(alumnus.profession, 80)}
+                                    ${truncateText(alumnus.profession, 120)}
                                 </div>
                             </div>
                             ${alumnus.contact ? `
@@ -912,7 +1022,7 @@
                     alumnus.name.toLowerCase().includes(searchTerm) ||
                     alumnus.profession.toLowerCase().includes(searchTerm) ||
                     alumnus.location.toLowerCase().includes(searchTerm) ||
-                    alumnus.lastYear.includes(searchTerm);
+                    alumnus.lastYear.toLowerCase().includes(searchTerm);
 
                 const matchesYear = !yearFilter || alumnus.lastYear === yearFilter;
                 const matchesLocation = !locationFilter || alumnus.location === locationFilter;
