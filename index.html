@@ -1,549 +1,549 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SSKV Alumni Directory</title>
-    <meta name="description" content="Connect with SSKV alumni worldwide - your premier alumni network">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --saffron: #FF9933;
-            --deep-saffron: #FF8C00;
-            --gold: #FFD700;
-            --deep-red: #CC2936;
-            --maroon: #8B0000;
-            --cream: #FFF8DC;
-            --warm-white: #FFFEF7;
-            --gradient-primary: linear-gradient(135deg, #FF9933 0%, #FF8C00 100%);
-            --gradient-secondary: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            --gradient-card: linear-gradient(145deg, #FFFFFF 0%, #FFF8DC 100%);
-            --shadow-soft: 0 4px 20px rgba(255, 153, 51, 0.15);
-            --shadow-hover: 0 8px 30px rgba(255, 153, 51, 0.25);
-            --shadow-deep: 0 10px 40px rgba(139, 0, 0, 0.2);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #FFF8DC 0%, #FFFEF7 50%, #FFF8DC 100%);
-            color: #2C2C2C;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Header */
-        .header {
-            background: var(--gradient-primary);
-            color: white;
-            padding: 1.5rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: var(--shadow-deep);
-        }
-
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logo {
-            width: 70px;
-            height: 50px;
-            background: white;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: var(--saffron);
-            font-weight: 700;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .header-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .header-subtitle {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            margin-top: 0.2rem;
-        }
-
-        .stats {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .stat-item {
-            text-align: center;
-            background: rgba(255,255,255,0.15);
-            padding: 0.5rem 1rem;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-        }
-
-        .stat-number {
-            font-size: 1.5rem;
-            font-weight: 700;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            opacity: 0.9;
-        }
-
-        /* Search and Filters */
-        .controls {
-            max-width: 1400px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-        }
-
-        .search-section {
-            background: var(--gradient-card);
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: var(--shadow-soft);
-            margin-bottom: 2rem;
-        }
-
-        .search-box {
-            position: relative;
-            margin-bottom: 1.5rem;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 1rem 1rem 1rem 3rem;
-            border: 2px solid #E5E5E5;
-            border-radius: 15px;
-            font-size: 1.1rem;
-            background: white;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: var(--saffron);
-            box-shadow: 0 0 0 4px rgba(255, 153, 51, 0.1);
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #999;
-            font-size: 1.2rem;
-        }
-
-        .filters {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .filter-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .filter-label {
-            font-weight: 600;
-            color: var(--deep-red);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .filter-select {
-            padding: 0.75rem;
-            border: 2px solid #E5E5E5;
-            border-radius: 10px;
-            background: white;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .filter-select:focus {
-            outline: none;
-            border-color: var(--saffron);
-            box-shadow: 0 0 0 3px rgba(255, 153, 51, 0.1);
-        }
-
-        .filter-actions {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 1rem;
-        }
-
-        .action-btn {
-            background: var(--gradient-secondary);
-            color: #333;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .action-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .action-btn.clear {
-            background: linear-gradient(135deg, #dc3545, #c82333);
-            color: white;
-        }
-
-        /* Alumni Grid */
-        .alumni-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .alumni-card {
-            background: var(--gradient-card);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow-soft);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-        }
-
-        .alumni-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .card-header {
-            position: relative;
-            background: var(--gradient-primary);
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .alumni-photo {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin: 0 auto 1rem;
-            border: 4px solid white;
-            background: white;
-            object-fit: cover;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-        }
-
-        .alumni-card:hover .alumni-photo {
-            transform: scale(1.05);
-        }
-
-        .default-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin: 0 auto 1rem;
-            border: 4px solid white;
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: white;
-            font-weight: 700;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .alumni-name {
-            color: white;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-        }
-
-        .alumni-year {
-            color: rgba(255,255,255,0.9);
-            font-size: 0.9rem;
-            background: rgba(255,255,255,0.2);
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            display: inline-block;
-        }
-
-        .card-body {
-            padding: 1.5rem;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-            padding: 0.75rem;
-            background: rgba(255, 153, 51, 0.05);
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .info-item:hover {
-            background: rgba(255, 153, 51, 0.1);
-        }
-
-        .info-icon {
-            width: 20px;
-            color: var(--saffron);
-            font-size: 1.1rem;
-            margin-top: 0.1rem;
-            flex-shrink: 0;
-        }
-
-        .info-text {
-            flex: 1;
-            font-size: 0.95rem;
-            line-height: 1.4;
-        }
-
-        .info-label {
-            font-weight: 600;
-            color: var(--deep-red);
-            display: block;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.2rem;
-        }
-
-        .contact-actions {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .contact-btn {
-            flex: 1;
-            padding: 0.75rem;
-            border: none;
-            border-radius: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        .whatsapp-btn {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-        }
-
-        .whatsapp-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-        }
-
-        .phone-btn {
-            background: var(--gradient-secondary);
-            color: #333;
-        }
-
-        .phone-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
-        }
-
-        /* No Results */
-        .no-results {
-            text-align: center;
-            padding: 4rem 2rem;
-            color: #666;
-            grid-column: 1 / -1;
-        }
-
-        .no-results i {
-            font-size: 4rem;
-            color: var(--saffron);
-            margin-bottom: 1rem;
-        }
-
-        .no-results h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--deep-red);
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--gradient-primary);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .footer-links {
-            margin-top: 1rem;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-link {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-link:hover {
-            color: var(--gold);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-title {
-                font-size: 1.5rem;
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SSKV Alumni Directory</title>
+        <meta name="description" content="Connect with SSKV alumni worldwide - your premier alumni network">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <style>
+            :root {
+                --saffron: #FF9933;
+                --deep-saffron: #FF8C00;
+                --gold: #FFD700;
+                --deep-red: #CC2936;
+                --maroon: #8B0000;
+                --cream: #FFF8DC;
+                --warm-white: #FFFEF7;
+                --gradient-primary: linear-gradient(135deg, #FF9933 0%, #FF8C00 100%);
+                --gradient-secondary: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+                --gradient-card: linear-gradient(145deg, #FFFFFF 0%, #FFF8DC 100%);
+                --shadow-soft: 0 4px 20px rgba(255, 153, 51, 0.15);
+                --shadow-hover: 0 8px 30px rgba(255, 153, 51, 0.25);
+                --shadow-deep: 0 10px 40px rgba(139, 0, 0, 0.2);
             }
-            
-            .stats {
+    
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+    
+            body {
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+                background: linear-gradient(135deg, #FFF8DC 0%, #FFFEF7 50%, #FFF8DC 100%);
+                color: #2C2C2C;
+                line-height: 1.6;
+                overflow-x: hidden;
+            }
+    
+            /* Header */
+            .header {
+                background: var(--gradient-primary);
+                color: white;
+                padding: 1.5rem 0;
+                position: sticky;
+                top: 0;
+                z-index: 100;
+                box-shadow: var(--shadow-deep);
+            }
+    
+            .header-content {
+                max-width: 1400px;
+                margin: 0 auto;
+                padding: 0 1.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: wrap;
                 gap: 1rem;
             }
-            
-            .stat-item {
-                padding: 0.4rem 0.8rem;
+    
+            .logo-section {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
             }
-            
+    
+            .logo {
+                width: 70px;
+                height: 50px;
+                background: white;
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 24px;
+                color: var(--saffron);
+                font-weight: 700;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            }
+    
+            .header-title {
+                font-family: 'Poppins', sans-serif;
+                font-size: 2rem;
+                font-weight: 700;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            }
+    
+            .header-subtitle {
+                font-size: 0.9rem;
+                opacity: 0.9;
+                margin-top: 0.2rem;
+            }
+    
+            .stats {
+                display: flex;
+                gap: 2rem;
+                align-items: center;
+            }
+    
+            .stat-item {
+                text-align: center;
+                background: rgba(255,255,255,0.15);
+                padding: 0.5rem 1rem;
+                border-radius: 10px;
+                backdrop-filter: blur(10px);
+            }
+    
             .stat-number {
+                font-size: 1.5rem;
+                font-weight: 700;
+                display: block;
+            }
+    
+            .stat-label {
+                font-size: 0.8rem;
+                opacity: 0.9;
+            }
+    
+            /* Search and Filters */
+            .controls {
+                max-width: 1400px;
+                margin: 2rem auto;
+                padding: 0 1.5rem;
+            }
+    
+            .search-section {
+                background: var(--gradient-card);
+                border-radius: 20px;
+                padding: 2rem;
+                box-shadow: var(--shadow-soft);
+                margin-bottom: 2rem;
+            }
+    
+            .search-box {
+                position: relative;
+                margin-bottom: 1.5rem;
+            }
+    
+            .search-input {
+                width: 100%;
+                padding: 1rem 1rem 1rem 3rem;
+                border: 2px solid #E5E5E5;
+                border-radius: 15px;
+                font-size: 1.1rem;
+                background: white;
+                transition: all 0.3s ease;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            }
+    
+            .search-input:focus {
+                outline: none;
+                border-color: var(--saffron);
+                box-shadow: 0 0 0 4px rgba(255, 153, 51, 0.1);
+            }
+    
+            .search-icon {
+                position: absolute;
+                left: 1rem;
+                top: 50%;
+                transform: translateY(-50%);
+                color: #999;
                 font-size: 1.2rem;
             }
-            
-            .alumni-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            
+    
             .filters {
-                grid-template-columns: 1fr;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
+                margin-bottom: 1rem;
             }
-            
-            .filter-actions {
-                flex-direction: column;
-            }
-            
-            .contact-actions {
-                flex-direction: column;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header-content {
-                text-align: center;
-            }
-            
-            .logo-section {
+    
+            .filter-group {
+                display: flex;
                 flex-direction: column;
                 gap: 0.5rem;
             }
-            
-            .search-section {
+    
+            .filter-label {
+                font-weight: 600;
+                color: var(--deep-red);
+                font-size: 0.9rem;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+    
+            .filter-select {
+                padding: 0.75rem;
+                border: 2px solid #E5E5E5;
+                border-radius: 10px;
+                background: white;
+                font-size: 1rem;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+    
+            .filter-select:focus {
+                outline: none;
+                border-color: var(--saffron);
+                box-shadow: 0 0 0 3px rgba(255, 153, 51, 0.1);
+            }
+    
+            .filter-actions {
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+                margin-top: 1rem;
+            }
+    
+            .action-btn {
+                background: var(--gradient-secondary);
+                color: #333;
+                border: none;
+                padding: 0.75rem 1.5rem;
+                border-radius: 10px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+    
+            .action-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: var(--shadow-hover);
+            }
+    
+            .action-btn.clear {
+                background: linear-gradient(135deg, #dc3545, #c82333);
+                color: white;
+            }
+    
+            /* Alumni Grid */
+            .alumni-grid {
+                max-width: 1400px;
+                margin: 0 auto;
+                padding: 0 1.5rem;
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+                gap: 1.5rem;
+                margin-bottom: 3rem;
+            }
+    
+            .alumni-card {
+                background: var(--gradient-card);
+                border-radius: 20px;
+                overflow: hidden;
+                box-shadow: var(--shadow-soft);
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                position: relative;
+            }
+    
+            .alumni-card:hover {
+                transform: translateY(-8px);
+                box-shadow: var(--shadow-hover);
+            }
+    
+            .card-header {
+                position: relative;
+                background: var(--gradient-primary);
+                padding: 1.5rem;
+                text-align: center;
+            }
+    
+            .alumni-photo {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                margin: 0 auto 1rem;
+                border: 4px solid white;
+                background: white;
+                object-fit: cover;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                transition: all 0.3s ease;
+            }
+    
+            .alumni-card:hover .alumni-photo {
+                transform: scale(1.05);
+            }
+    
+            .default-avatar {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                margin: 0 auto 1rem;
+                border: 4px solid white;
+                background: linear-gradient(135deg, #FFD700, #FFA500);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2rem;
+                color: white;
+                font-weight: 700;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            }
+    
+            .alumni-name {
+                color: white;
+                font-size: 1.3rem;
+                font-weight: 700;
+                margin-bottom: 0.5rem;
+                text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            }
+    
+            .alumni-year {
+                color: rgba(255,255,255,0.9);
+                font-size: 0.9rem;
+                background: rgba(255,255,255,0.2);
+                padding: 0.3rem 0.8rem;
+                border-radius: 15px;
+                display: inline-block;
+            }
+    
+            .card-body {
                 padding: 1.5rem;
             }
-            
+    
+            .info-item {
+                display: flex;
+                align-items: flex-start;
+                gap: 0.75rem;
+                margin-bottom: 1rem;
+                padding: 0.75rem;
+                background: rgba(255, 153, 51, 0.05);
+                border-radius: 10px;
+                transition: all 0.3s ease;
+            }
+    
+            .info-item:hover {
+                background: rgba(255, 153, 51, 0.1);
+            }
+    
+            .info-icon {
+                width: 20px;
+                color: var(--saffron);
+                font-size: 1.1rem;
+                margin-top: 0.1rem;
+                flex-shrink: 0;
+            }
+    
+            .info-text {
+                flex: 1;
+                font-size: 0.95rem;
+                line-height: 1.4;
+            }
+    
+            .info-label {
+                font-weight: 600;
+                color: var(--deep-red);
+                display: block;
+                font-size: 0.8rem;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                margin-bottom: 0.2rem;
+            }
+    
+            .contact-actions {
+                display: flex;
+                gap: 0.5rem;
+                margin-top: 1rem;
+            }
+    
+            .contact-btn {
+                flex: 1;
+                padding: 0.75rem;
+                border: none;
+                border-radius: 10px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                font-size: 0.9rem;
+            }
+    
+            .whatsapp-btn {
+                background: linear-gradient(135deg, #25D366, #128C7E);
+                color: white;
+            }
+    
+            .whatsapp-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            }
+    
+            .phone-btn {
+                background: var(--gradient-secondary);
+                color: #333;
+            }
+    
+            .phone-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+            }
+    
+            /* No Results */
+            .no-results {
+                text-align: center;
+                padding: 4rem 2rem;
+                color: #666;
+                grid-column: 1 / -1;
+            }
+    
+            .no-results i {
+                font-size: 4rem;
+                color: var(--saffron);
+                margin-bottom: 1rem;
+            }
+    
+            .no-results h3 {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+                color: var(--deep-red);
+            }
+    
+            /* Footer */
+            .footer {
+                background: var(--gradient-primary);
+                color: white;
+                text-align: center;
+                padding: 2rem;
+                margin-top: 3rem;
+            }
+    
+            .footer-content {
+                max-width: 1400px;
+                margin: 0 auto;
+            }
+    
+            .footer-links {
+                margin-top: 1rem;
+                display: flex;
+                justify-content: center;
+                gap: 2rem;
+                flex-wrap: wrap;
+            }
+    
+            .footer-link {
+                color: rgba(255,255,255,0.8);
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+    
+            .footer-link:hover {
+                color: var(--gold);
+            }
+    
+            /* Responsive Design */
+            @media (max-width: 768px) {
+                .header-title {
+                    font-size: 1.5rem;
+                }
+                
+                .stats {
+                    gap: 1rem;
+                }
+                
+                .stat-item {
+                    padding: 0.4rem 0.8rem;
+                }
+                
+                .stat-number {
+                    font-size: 1.2rem;
+                }
+                
+                .alumni-grid {
+                    grid-template-columns: 1fr;
+                    gap: 1rem;
+                }
+                
+                .filters {
+                    grid-template-columns: 1fr;
+                }
+                
+                .filter-actions {
+                    flex-direction: column;
+                }
+                
+                .contact-actions {
+                    flex-direction: column;
+                }
+            }
+    
+            @media (max-width: 480px) {
+                .header-content {
+                    text-align: center;
+                }
+                
+                .logo-section {
+                    flex-direction: column;
+                    gap: 0.5rem;
+                }
+                
+                .search-section {
+                    padding: 1.5rem;
+                }
+                
+                .alumni-card {
+                    margin: 0;
+                }
+            }
+    
+            /* Animations */
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+    
             .alumni-card {
-                margin: 0;
+                animation: fadeInUp 0.5s ease forwards;
             }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+    
+            .alumni-card:nth-child(even) {
+                animation-delay: 0.1s;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+    
+            .alumni-card:nth-child(3n) {
+                animation-delay: 0.2s;
             }
-        }
-
-        .alumni-card {
-            animation: fadeInUp 0.5s ease forwards;
-        }
-
-        .alumni-card:nth-child(even) {
-            animation-delay: 0.1s;
-        }
-
-        .alumni-card:nth-child(3n) {
-            animation-delay: 0.2s;
-        }
-
-        /* Loading skeleton for images */
-        .photo-skeleton {
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 200% 100%;
-            animation: loading 1.5s infinite;
-        }
-
-        @keyframes loading {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-    </style>
-</head>
+    
+            /* Loading skeleton for images */
+            .photo-skeleton {
+                background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+                background-size: 200% 100%;
+                animation: loading 1.5s infinite;
+            }
+    
+            @keyframes loading {
+                0% { background-position: 200% 0; }
+                100% { background-position: -200% 0; }
+            }
+        </style>
+    </head>
 <body>
     <!-- Header -->
     <header class="header">
@@ -607,296 +607,81 @@
     </div>
 
     <!-- Alumni Grid -->
-    <div class="alumni-grid" id="alumniGrid">
-        <!-- Alumni cards will be populated here -->
-    </div>
+    <div class="alumni-grid" id="alumniGrid"></div>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
             <p>&copy; 2025 SSKV Alumni Directory. Connecting generations of excellence.</p>
             <p style="margin-top: 0.5rem; opacity: 0.8;">
-                <i class="fas fa-heart" style="color: #FFD700;"></i> 
-                Made with love for the SSKV family
+                <i class="fas fa-heart" style="color: #FFD700;"></i> Made with love for the SSKV family
             </p>
-            <div class="footer-links">
-                <a href="#" class="footer-link">About SSKV</a>
-                <a href="#" class="footer-link">Contact</a>
-                <a href="#" class="footer-link">Privacy Policy</a>
-                <a href="#" class="footer-link">Submit Updates</a>
-            </div>
         </div>
     </footer>
 
+    <!-- Load the SheetJS library first -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
     <script>
-        // SSKV Alumni Data - Real data from Google Sheet
-        // SSKV Alumni Data - With GitHub-hosted photos
-
         const GITHUB_BASE_URL = "https://BharathSubbarao.github.io/sskv-alumni-directory/images/";
-
-        const ALUMNI_DATA = [
-            {
-                name: "Senthilkumar Chandrasekaran",
-                lastYear: "XII / 1996",
-                location: "Chennai",
-                profession: "Sr. GM - Engineering at VA Tech Wabag, Indian MNC with specialisation in Water and Wastewater Treatment",
-                contact: "+91 9382125363",
-                whatsappName: "Senthilkumar",
-                photoUrl: GITHUB_BASE_URL + "Senthilkumar Chandrasekaran.jpg"
-            },
-            {
-                name: "C Elanchezian",
-                lastYear: "8th Standard",
-                location: "Chennai",
-                profession: "AGM, Hyundai Motor India Limited",
-                contact: "+91 9940689936",
-                whatsappName: "Chezhian",
-                photoUrl: null
-            },
-            {
-                name: "Naresh G",
-                lastYear: "12th",
-                location: "Tiruchirappalli",
-                profession: "Teaching",
-                contact: "+91 7338985380",
-                whatsappName: "NG",
-                photoUrl: GITHUB_BASE_URL + "Naresh Gopal.jpeg"
-            },
-            {
-                name: "Ashok Venkatesan",
-                lastYear: "1996",
-                location: "Chennai",
-                profession: "IT and Agriculture",
-                contact: "+91 9176069444",
-                whatsappName: "Ashok Venkatesan",
-                photoUrl: GITHUB_BASE_URL + "Ashok Venkatesan.jpg"
-            },
-            {
-                name: "J Saravanan",
-                lastYear: "XII",
-                location: "Mumbai",
-                profession: "Commissioner of Income-tax",
-                contact: "+91 7506660190",
-                whatsappName: "Saravanan",
-                photoUrl: GITHUB_BASE_URL + "Saravanan Jayakumar.jpeg"
-            },
-            {
-                name: "Bharathvajan Subbarao",
-                lastYear: "6 to 12",
-                location: "Hyderabad",
-                profession: "Software Professional",
-                contact: "+91 9676555717",
-                whatsappName: "Bharath Subbarao",
-                photoUrl: GITHUB_BASE_URL + "Bharathvajan Subbarao.png"
-            },
-            {
-                name: "Pradeep",
-                lastYear: "10th",
-                location: "Auckland",
-                profession: "Self Employed",
-                contact: "+64 0223670095",
-                whatsappName: "Pradeep",
-                photoUrl: null
-            },
-            {
-                name: "R. Parthasarathy",
-                lastYear: "12th",
-                location: "Chengalpattu",
-                profession: "Consultant Optometrist and Contact Lens Specialist",
-                contact: "+91 7845675633",
-                whatsappName: "Parthasarathy",
-                photoUrl: GITHUB_BASE_URL + "Ramanujam Parthasarathy.jpg"
-            },
-            {
-                name: "D Prabakar",
-                lastYear: "10th",
-                location: "Kanchipuram",
-                profession: "Document Writer",
-                contact: "+91 9842379539",
-                whatsappName: "PRABAKAR",
-                photoUrl: GITHUB_BASE_URL + "DURAIRAJ PRABAKAR.jpg"
-            },
-            {
-                name: "Praveen Ramachandran",
-                lastYear: "12th",
-                location: "Chennai",
-                profession: "Freelancer - Photographer - Designer",
-                contact: "+91 7338897333",
-                whatsappName: "Praveen Artsymonk",
-                photoUrl: GITHUB_BASE_URL + "Praveen Ramachandran.jpeg"
-            },
-            {
-                name: "Prasanna",
-                lastYear: "5th Std",
-                location: "Chennai",
-                profession: "Principal Program Manager",
-                contact: "+91 9940253693",
-                whatsappName: "Prasanna",
-                photoUrl: GITHUB_BASE_URL + "Prasanna.jpeg"
-            },
-            {
-                name: "Balaji Ramachandran",
-                lastYear: "12th",
-                location: "Vellore",
-                profession: "Footwear Sourcing Operations Leader",
-                contact: "+91 9791451600",
-                whatsappName: "Balaji Ram",
-                photoUrl: GITHUB_BASE_URL + "Balaji Ram.jpeg"
-            },
-            {
-                name: "Bonss Sorko Bonss",
-                lastYear: "9th to 12th Std",
-                location: "Chennai",
-                profession: "Product Manager in CAM Ltd",
-                contact: "+91 8608123926",
-                whatsappName: "@My Redeemer JESUS SAVES",
-                photoUrl: null
-            },
-            {
-                name: "S. Prakash",
-                lastYear: "Till Twelfth Year 1996",
-                location: "Chennai",
-                profession: "Business",
-                contact: "+91 9884720008",
-                whatsappName: "Prakash",
-                photoUrl: null
-            },
-            {
-                name: "Madhanraj Mahendran",
-                lastYear: "1996",
-                location: "Chennai",
-                profession: "Pharmacist working in Pharma Manufacturing Company",
-                contact: "+91 9840432834",
-                whatsappName: "Madhanraj",
-                photoUrl: null
-            },
-            {
-                name: "Raghunaath M",
-                lastYear: "8/92",
-                location: "India",
-                profession: "Manager, IT Tech., Nuvama Wealth and Investment Ltd",
-                contact: "+91 9840954897",
-                whatsappName: "Raghunaath M",
-                photoUrl: GITHUB_BASE_URL + "Raghunaath Mohandass.jpg"
-            },
-            {
-                name: "Seetharaman",
-                lastYear: "12th",
-                location: "Kanchipuram",
-                profession: "IT",
-                contact: "+91 9444111210",
-                whatsappName: "Seetharaman",
-                photoUrl: GITHUB_BASE_URL + "SEETHARAMAN RANGANATHAN.jpg"
-            },
-            {
-                name: "S. Bharathi",
-                lastYear: "10th",
-                location: "Chennai",
-                profession: "Lawyer",
-                contact: "+91 9941511000",
-                whatsappName: "SIVA BHARATHI",
-                photoUrl: GITHUB_BASE_URL + "Bharathi Siva.jpeg"
-            },
-            {
-                name: "Sudhagar Alphonse",
-                lastYear: "Till 7th, 11 and 12",
-                location: "Chennai",
-                profession: "IT Infrastructure Director at JeyaRama, handling IT Ops Team and Dev Ops Team. Previously worked for Sutherland, Hewlett Packard, DXC Technology, Urjanet, Arcadia",
-                contact: "+91 9940298362",
-                whatsappName: "SUDHAGAR ALPHONSE",
-                photoUrl: GITHUB_BASE_URL + "Sudhagar Alphonse.jpg"
-            },
-            {
-                name: "Kanagaraj Radhakrishnan",
-                lastYear: "+2; 1996",
-                location: "London",
-                profession: "Senior Scientist & Senior Lecturer",
-                contact: "+44 7427648603",
-                whatsappName: "\"RAJ\" R. KANAGARAJ",
-                photoUrl: null
-            },
-            {
-                name: "Dilip Pichumani",
-                lastYear: "8-10",
-                location: "Austin",
-                profession: "IT - Program Management",
-                contact: "+1 5128293068",
-                whatsappName: "Dilip Pichumani",
-                photoUrl: GITHUB_BASE_URL + "Dilip PM.jpeg"
-            },
-            {
-                name: "Sathish Srinivasan",
-                lastYear: "10th - 12th",
-                location: "Boston",
-                profession: "Research Scientist (Biotech R&D)",
-                contact: "+1 4027403375",
-                whatsappName: "Sathish",
-                photoUrl: GITHUB_BASE_URL + "Sathish Srinivasan.jpg"
-            },
-            {
-                name: "Shanmugaraj C",
-                lastYear: "Grade 8",
-                location: "Kanchipuram",
-                profession: "Silk Saree Business",
-                contact: "+91 9443355008",
-                whatsappName: "Chickkannan Shanmugaraj",
-                photoUrl: null
-            },
-            {
-                name: "Mohan Balasubramaniyan",
-                lastYear: "10th",
-                location: "Bangalore",
-                profession: "Senior Tech Lead",
-                contact: "+91 9972298637",
-                whatsappName: "Mohan",
-                photoUrl: GITHUB_BASE_URL + "Mohan Balasubramaniyan.jpeg"
-            },
-            {
-                name: "L Karthikeyan",
-                lastYear: "10th",
-                location: "Kanchipuram",
-                profession: "SCM profession",
-                contact: "+91 8680018008",
-                whatsappName: "L Karthik",
-                photoUrl: null
-            },
-            {
-                name: "Yuvaraj G",
-                lastYear: "10th",
-                location: "Kanchipuram",
-                profession: "Film Maker",
-                contact: "+91 9843080309",
-                whatsappName: "Yuvagovindh",
-                photoUrl: GITHUB_BASE_URL + "Yuva Govindh.JPG"
-            }            
-
-        ];
-
-        // Global variables
-        let alumniData = [...ALUMNI_DATA];
-        let filteredAlumni = [...ALUMNI_DATA];
+        let alumniData = [];
+        let filteredAlumni = [];
         let searchTimeout;
 
-        // Helper functions
-        function getInitials(name) {
-            return name.split(' ')
-                .map(word => word.charAt(0))
-                .join('')
-                .substring(0, 2)
-                .toUpperCase();
+        async function loadExcelData() {
+            try {
+                const response = await fetch("SSKV_Alumni_Data.xlsx");
+                const arrayBuffer = await response.arrayBuffer();
+                const workbook = XLSX.read(arrayBuffer, { type: "array" });
+                const sheetName = workbook.SheetNames[0];
+                const sheet = workbook.Sheets[sheetName];
+                const jsonData = XLSX.utils.sheet_to_json(sheet);
+
+                console.log("Parsed Excel rows:", jsonData.slice(0, 3));
+
+                alumniData = jsonData.map(row => ({
+                    name: row["Full Name"] || "",
+                    lastYear: row["Last Year at SSKV"] || "",
+                    location: row["Location"] || "",
+                    profession: row["Profession"] || "",
+                    contact: row["Contact Number"] || "",
+                    whatsappName: row["WhatsApp Name"] || "",
+                    photoUrl: GITHUB_BASE_URL + row["Photo File"]
+                }));
+
+                console.log("alumni data rows:", alumniData.slice(0, 3));
+
+                filteredAlumni = [...alumniData];
+                initializeApp();
+            } catch (err) {
+                console.error("Error loading Excel:", err);
+            }
         }
 
+        /* === all helper functions, render, filters, etc. remain exactly the same as in your original === */
+
+        function getInitials(name) {
+        return name
+            .split(" ")
+            .map((w) => w.charAt(0))
+            .join("")
+            .substring(0, 2)
+            .toUpperCase();
+        }
         function truncateText(text, maxLength) {
-            if (!text) return '';
-            return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+        if (!text) return "";
+        return text.length > maxLength ? text.substring(0, maxLength) + "..." : text;
         }
 
         function formatPhoneForWhatsApp(phone) {
             if (!phone) return '';
-            
+
+            // Ensure it's a string
+            phone = String(phone).trim();
+
             // Remove all non-digit characters except +
             let cleaned = phone.replace(/[^\d+]/g, '');
-            
+
             // Handle different phone number formats
             if (cleaned.startsWith('+91')) {
                 return cleaned;
@@ -909,239 +694,194 @@
             } else if (cleaned.length > 10) {
                 return '+' + cleaned;
             }
-            
+
             return '+91' + cleaned;
         }
 
-        function getProfessionCategory(profession) {
-            if (!profession) return 'Other';
-            const lower = profession.toLowerCase();
-            
-            if (lower.includes('software') || lower.includes('it ') || lower.includes('tech') || lower.includes('program')) {
-                return 'Technology';
-            } else if (lower.includes('manager') || lower.includes('business') || lower.includes('consultant') || lower.includes('operations')) {
-                return 'Management';
-            } else if (lower.includes('doctor') || lower.includes('medical') || lower.includes('optometrist')) {
-                return 'Healthcare';
-            } else if (lower.includes('teacher') || lower.includes('education') || lower.includes('lecturer')) {
-                return 'Education';
-            } else if (lower.includes('engineer') || lower.includes('scientist') || lower.includes('research')) {
-                return 'Engineering & Science';
-            } else if (lower.includes('lawyer') || lower.includes('legal')) {
-                return 'Legal';
-            } else if (lower.includes('self') || lower.includes('freelance') || lower.includes('entrepreneur')) {
-                return 'Entrepreneurship';
-            } else if (lower.includes('photographer') || lower.includes('designer') || lower.includes('creative')) {
-                return 'Creative';
-            } else if (lower.includes('finance') || lower.includes('investment') || lower.includes('income-tax')) {
-                return 'Finance';
-            } else if (lower.includes('pharmacist') || lower.includes('pharma')) {
-                return 'Pharmaceutical';
-            } else {
-                return 'Other';
-            }
+
+        function getProfessionCategory(p) {
+        if (!p) return "Other";
+        const l = p.toLowerCase();
+        if (
+            l.includes("software") ||
+            l.includes("it ") ||
+            l.includes("tech") ||
+            l.includes("program")
+        )
+            return "Technology";
+        if (
+            l.includes("manager") ||
+            l.includes("business") ||
+            l.includes("consultant") ||
+            l.includes("operations")
+        )
+            return "Management";
+        if (
+            l.includes("doctor") ||
+            l.includes("medical") ||
+            l.includes("optometrist")
+        )
+            return "Healthcare";
+        if (
+            l.includes("teacher") ||
+            l.includes("education") ||
+            l.includes("lecturer")
+        )
+            return "Education";
+        if (
+            l.includes("engineer") ||
+            l.includes("scientist") ||
+            l.includes("research")
+        )
+            return "Engineering & Science";
+
+        if (
+            l.includes("lawyer") || 
+            l.includes("legal") || 
+            l.includes("judicial")
+        ) 
+            return "Legal";
+
+        if (
+            l.includes("self") ||
+            l.includes("freelance") ||
+            l.includes("entrepreneur")
+        )
+            return "Entrepreneurship";
+        if (
+            l.includes("photographer") ||
+            l.includes("designer") ||
+            l.includes("creative")
+        )
+            return "Creative";
+        if (
+            l.includes("finance") ||
+            l.includes("investment") ||
+            l.includes("income-tax")
+        )
+            return "Finance";
+        if (l.includes("pharmacist") || l.includes("pharma")) return "Pharmaceutical";
+        return "Other";
         }
 
-        // Populate filter dropdowns
         function populateFilters() {
-            const years = [...new Set(alumniData.map(a => a.lastYear))].sort();
-            const locations = [...new Set(alumniData.map(a => a.location))].sort();
-            const professions = [...new Set(alumniData.map(a => getProfessionCategory(a.profession)))].sort();
-
-            populateSelect('yearFilter', years);
-            populateSelect('locationFilter', locations);
-            populateSelect('professionFilter', professions);
+        const years = [...new Set(alumniData.map((a) => a.lastYear))].sort();
+        const locs = [...new Set(alumniData.map((a) => a.location))].sort();
+        const profs = [
+            ...new Set(alumniData.map((a) => getProfessionCategory(a.profession))),
+        ].sort();
+        populateSelect("yearFilter", years);
+        populateSelect("locationFilter", locs);
+        populateSelect("professionFilter", profs);
+        }
+        function populateSelect(id, options) {
+        const s = document.getElementById(id);
+        while (s.children.length > 1) s.removeChild(s.lastChild);
+        options.forEach((o) => {
+            const e = document.createElement("option");
+            e.value = o;
+            e.textContent = o;
+            s.appendChild(e);
+        });
         }
 
-        function populateSelect(selectId, options) {
-            const select = document.getElementById(selectId);
-            // Clear existing options except the first one
-            while (select.children.length > 1) {
-                select.removeChild(select.lastChild);
-            }
-            
-            options.forEach(option => {
-                const optionElement = document.createElement('option');
-                optionElement.value = option;
-                optionElement.textContent = option;
-                select.appendChild(optionElement);
-            });
+        function renderAlumni(list) {
+        const grid = document.getElementById("alumniGrid");
+        if (list.length === 0) {
+            grid.innerHTML = `<div class="no-results"><i class="fas fa-search"></i><h3>No Alumni Found</h3><p>Try adjusting your search criteria or clearing filters.</p></div>`;
+            return;
+        }
+        grid.innerHTML = list
+            .map((a, i) => {
+            const initials = getInitials(a.name);
+            const photo = a.photoUrl
+                ? `<img src="${a.photoUrl}" alt="${a.name}" class="alumni-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" loading="lazy"><div class="default-avatar" style="display:none;">${initials}</div>`
+                : `<div class="default-avatar">${initials}</div>`;
+            return `<div class="alumni-card" style="animation-delay:${Math.min(i * 0.1, 2)}s"><div class="card-header">${photo}<h3 class="alumni-name">${a.name}</h3><span class="alumni-year">${a.lastYear}</span></div><div class="card-body"><div class="info-item"><i class="fas fa-map-marker-alt info-icon"></i><div class="info-text"><span class="info-label">Location</span>${a.location}</div></div><div class="info-item"><i class="fas fa-briefcase info-icon"></i><div class="info-text"><span class="info-label">Profession</span>${truncateText(a.profession, 120)}</div></div>${a.contact ? `<div class="contact-actions"><a href="https://wa.me/${formatPhoneForWhatsApp(a.contact)}?text=Hi ${encodeURIComponent(a.whatsappName || a.name)}, I found you through the SSKV Alumni Directory!" class="contact-btn whatsapp-btn" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="tel:${a.contact}" class="contact-btn phone-btn"><i class="fas fa-phone"></i> Call</a></div>` : ""}</div></div>`;
+            })
+            .join("");
         }
 
-        // Render alumni cards
-        function renderAlumni(alumni) {
-            const grid = document.getElementById('alumniGrid');
-            
-            if (alumni.length === 0) {
-                grid.innerHTML = `
-                    <div class="no-results">
-                        <i class="fas fa-search"></i>
-                        <h3>No Alumni Found</h3>
-                        <p>Try adjusting your search criteria or clearing filters.</p>
-                    </div>
-                `;
-                return;
-            }
-
-            grid.innerHTML = alumni.map((alumnus, index) => {
-                const initials = getInitials(alumnus.name);
-                const photoElement = alumnus.photoUrl ? 
-                    `<img src="${alumnus.photoUrl}" alt="${alumnus.name}" class="alumni-photo" 
-                          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" 
-                          loading="lazy">
-                     <div class="default-avatar" style="display: none;">${initials}</div>` :
-                    `<div class="default-avatar">${initials}</div>`;
-
-                return `
-                    <div class="alumni-card" style="animation-delay: ${Math.min(index * 0.1, 2)}s">
-                        <div class="card-header">
-                            ${photoElement}
-                            <h3 class="alumni-name">${alumnus.name}</h3>
-                            <span class="alumni-year">${alumnus.lastYear}</span>
-                        </div>
-                        <div class="card-body">
-                            <div class="info-item">
-                                <i class="fas fa-map-marker-alt info-icon"></i>
-                                <div class="info-text">
-                                    <span class="info-label">Location</span>
-                                    ${alumnus.location}
-                                </div>
-                            </div>
-                            <div class="info-item">
-                                <i class="fas fa-briefcase info-icon"></i>
-                                <div class="info-text">
-                                    <span class="info-label">Profession</span>
-                                    ${truncateText(alumnus.profession, 120)}
-                                </div>
-                            </div>
-                            ${alumnus.contact ? `
-                            <div class="contact-actions">
-                                <a href="https://wa.me/${formatPhoneForWhatsApp(alumnus.contact)}?text=Hi ${encodeURIComponent(alumnus.whatsappName || alumnus.name)}, I found you through the SSKV Alumni Directory!" 
-                                   class="contact-btn whatsapp-btn" target="_blank" rel="noopener">
-                                    <i class="fab fa-whatsapp"></i>
-                                    WhatsApp
-                                </a>
-                                <a href="tel:${alumnus.contact}" class="contact-btn phone-btn">
-                                    <i class="fas fa-phone"></i>
-                                    Call
-                                </a>
-                            </div>
-                            ` : ''}
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        // Filter and search functions
         function filterAlumni() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
-            const yearFilter = document.getElementById('yearFilter').value;
-            const locationFilter = document.getElementById('locationFilter').value;
-            const professionFilter = document.getElementById('professionFilter').value;
-
-            filteredAlumni = alumniData.filter(alumnus => {
-                const matchesSearch = !searchTerm || 
-                    alumnus.name.toLowerCase().includes(searchTerm) ||
-                    alumnus.profession.toLowerCase().includes(searchTerm) ||
-                    alumnus.location.toLowerCase().includes(searchTerm) ||
-                    alumnus.lastYear.toLowerCase().includes(searchTerm);
-
-                const matchesYear = !yearFilter || alumnus.lastYear === yearFilter;
-                const matchesLocation = !locationFilter || alumnus.location === locationFilter;
-                const matchesProfession = !professionFilter || 
-                    getProfessionCategory(alumnus.profession) === professionFilter;
-
-                return matchesSearch && matchesYear && matchesLocation && matchesProfession;
-            });
-
-            renderAlumni(filteredAlumni);
-            updateStats();
+        const search = document
+            .getElementById("searchInput")
+            .value.toLowerCase()
+            .trim();
+        const y = document.getElementById("yearFilter").value;
+        const l = document.getElementById("locationFilter").value;
+        const p = document.getElementById("professionFilter").value;
+        filteredAlumni = alumniData.filter((a) => {
+            const mS =
+            !search ||
+            a.name.toLowerCase().includes(search) ||
+            a.profession.toLowerCase().includes(search) ||
+            a.location.toLowerCase().includes(search) ||
+            a.lastYear.toLowerCase().includes(search);
+            const mY = !y || a.lastYear === y;
+            const mL = !l || a.location === l;
+            const mP = !p || getProfessionCategory(a.profession) === p;
+            return mS && mY && mL && mP;
+        });
+        renderAlumni(filteredAlumni);
+        updateStats();
         }
-
         function updateStats() {
-            document.getElementById('totalAlumni').textContent = alumniData.length;
-            document.getElementById('filteredCount').textContent = filteredAlumni.length;
+        document.getElementById("totalAlumni").textContent = alumniData.length;
+        document.getElementById("filteredCount").textContent = filteredAlumni.length;
         }
-
         function clearFilters() {
-            document.getElementById('searchInput').value = '';
-            document.getElementById('yearFilter').value = '';
-            document.getElementById('locationFilter').value = '';
-            document.getElementById('professionFilter').value = '';
-            
-            filteredAlumni = [...alumniData];
-            renderAlumni(filteredAlumni);
-            updateStats();
+        document.getElementById("searchInput").value = "";
+        document.getElementById("yearFilter").value = "";
+        document.getElementById("locationFilter").value = "";
+        document.getElementById("professionFilter").value = "";
+        filteredAlumni = [...alumniData];
+        renderAlumni(filteredAlumni);
+        updateStats();
         }
-
         function showRandomAlumni() {
-            const shuffled = [...alumniData].sort(() => 0.5 - Math.random());
-            const randomSelection = shuffled.slice(0, Math.min(6, shuffled.length));
-            renderAlumni(randomSelection);
-            
-            // Update stats to show random selection
-            document.getElementById('filteredCount').textContent = randomSelection.length;
+        const s = [...alumniData].sort(() => 0.5 - Math.random());
+        const r = s.slice(0, Math.min(6, s.length));
+        renderAlumni(r);
+        document.getElementById("filteredCount").textContent = r.length;
         }
 
-        // Event listeners
         function setupEventListeners() {
-            // Search input with debounce
-            document.getElementById('searchInput').addEventListener('input', function() {
-                clearTimeout(searchTimeout);
-                searchTimeout = setTimeout(filterAlumni, 300);
-            });
-
-            // Filter dropdowns
-            document.getElementById('yearFilter').addEventListener('change', filterAlumni);
-            document.getElementById('locationFilter').addEventListener('change', filterAlumni);
-            document.getElementById('professionFilter').addEventListener('change', filterAlumni);
-
-            // Action buttons
-            document.getElementById('clearFilters').addEventListener('click', clearFilters);
-            document.getElementById('randomize').addEventListener('click', showRandomAlumni);
-
-            // Keyboard navigation
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    clearFilters();
-                }
-                if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
-                    e.preventDefault();
-                    document.getElementById('searchInput').focus();
-                }
-            });
-        }
-
-        // Initialize the app
-        function initializeApp() {
-            populateFilters();
-            renderAlumni(filteredAlumni);
-            updateStats();
-            setupEventListeners();
-        }
-
-        // Start the app when DOM is loaded
-        document.addEventListener('DOMContentLoaded', initializeApp);
-
-        // Add smooth scrolling
-        document.addEventListener('click', function(e) {
-            if (e.target.closest('.alumni-card')) {
-                const card = e.target.closest('.alumni-card');
-                card.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'nearest'
-                });
+        document.getElementById("searchInput").addEventListener("input", () => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(filterAlumni, 300);
+        });
+        document
+            .getElementById("yearFilter")
+            .addEventListener("change", filterAlumni);
+        document
+            .getElementById("locationFilter")
+            .addEventListener("change", filterAlumni);
+        document
+            .getElementById("professionFilter")
+            .addEventListener("change", filterAlumni);
+        document
+            .getElementById("clearFilters")
+            .addEventListener("click", clearFilters);
+        document
+            .getElementById("randomize")
+            .addEventListener("click", showRandomAlumni);
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") clearFilters();
+            if ((e.ctrlKey || e.metaKey) && e.key === "f") {
+            e.preventDefault();
+            document.getElementById("searchInput").focus();
             }
         });
-
-        // Service Worker registration for PWA (optional)
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                // You can register a service worker here for offline functionality
-                console.log('Ready for PWA features');
-            });
         }
+
+        function initializeApp() {
+        populateFilters();
+        renderAlumni(filteredAlumni);
+        updateStats();
+        setupEventListeners();
+        }
+
+        document.addEventListener('DOMContentLoaded', loadExcelData);
     </script>
 </body>
 </html>
